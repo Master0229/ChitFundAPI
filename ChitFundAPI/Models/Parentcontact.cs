@@ -1,0 +1,13 @@
+﻿namespace ChitFundAPI.Models
+{
+    public class Parentcontact
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string GroupName { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
+
+
+    }
+}

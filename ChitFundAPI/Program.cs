@@ -1,7 +1,13 @@
+using ChitFundAPI.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Dbcontext
+builder.Services.AddDbContext<IdentityModel>(item => item.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
 
 var app = builder.Build();
 
