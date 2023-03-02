@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChitFundAPI", "ChitFundAPI\ChitFundAPI.csproj", "{760152C9-5630-4AB0-A29F-44668EC5D8FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{760152C9-5630-4AB0-A29F-44668EC5D8FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{760152C9-5630-4AB0-A29F-44668EC5D8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{760152C9-5630-4AB0-A29F-44668EC5D8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{760152C9-5630-4AB0-A29F-44668EC5D8FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EEB5B44-18A2-4190-BFAD-553DE297AD44}
+	EndGlobalSection
+EndGlobal
