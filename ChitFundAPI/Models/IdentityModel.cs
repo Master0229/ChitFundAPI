@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace ChitFundAPI.Models
 {
@@ -9,5 +10,10 @@ namespace ChitFundAPI.Models
 
 
         }
+        public DbSet<Parentcontact> Parentcontacts { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<TransType> TransTypes { get; set; }
+        public DbSet<PaymentType> PaymentTypes { get; set; }
     }
 }
