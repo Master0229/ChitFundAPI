@@ -15,5 +15,11 @@ namespace ChitFundAPI.Models
         public DbSet<Company> Companies { get; set; }
         public DbSet<TransType> TransTypes { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
+        public DbSet<Plan> Plans { get; set; }
+        public DbSet<Plandetail> Plandetails { get; set; }
+        public DbSet<PlanAssign> PlanAssigns { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<SubTrans> SubTrans { get; set; }
     }
 }

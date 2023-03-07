@@ -1,4 +1,5 @@
 ﻿using ChitFundAPI.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace ChitFundAPI.Controllers
             Configuration = configuration;
         }
 
+        [EnableCors("MyAllowSpecificOrigins")]
         [HttpGet("Getorder")]
         public IActionResult Getorder()
         {

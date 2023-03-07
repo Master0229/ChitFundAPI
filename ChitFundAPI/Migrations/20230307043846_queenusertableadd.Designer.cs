@@ -4,6 +4,7 @@ using ChitFundAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChitFundAPI.Migrations
 {
     [DbContext(typeof(IdentityModel))]
-    partial class IdentityModelModelSnapshot : ModelSnapshot
+    [Migration("20230307043846_queenusertableadd")]
+    partial class queenusertableadd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -236,103 +238,6 @@ namespace ChitFundAPI.Migrations
                     b.ToTable("Plandetails");
                 });
 
-            modelBuilder.Entity("ChitFundAPI.Models.SubTrans", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<float>("Amount")
-                        .HasColumnType("real");
-
-                    b.Property<int>("ContactId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ModifiedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PaymentTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReferedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("TransDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("TransactionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ContactId");
-
-                    b.HasIndex("PaymentTypeId");
-
-                    b.HasIndex("ReferedBy");
-
-                    b.HasIndex("TransactionId");
-
-                    b.ToTable("SubTrans");
-                });
-
-            modelBuilder.Entity("ChitFundAPI.Models.Transaction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<float>("Amount")
-                        .HasColumnType("real");
-
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ContactId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsPaid")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("PlanDetailsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PlanId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReferedBy")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TransTypeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("ContactId");
-
-                    b.HasIndex("PlanDetailsId");
-
-                    b.HasIndex("PlanId");
-
-                    b.HasIndex("ReferedBy");
-
-                    b.HasIndex("TransTypeId");
-
-                    b.ToTable("Transactions");
-                });
-
             modelBuilder.Entity("ChitFundAPI.Models.TransType", b =>
                 {
                     b.Property<int>("Id")
@@ -490,90 +395,6 @@ namespace ChitFundAPI.Migrations
                     b.Navigation("Company");
 
                     b.Navigation("Plan");
-                });
-
-            modelBuilder.Entity("ChitFundAPI.Models.SubTrans", b =>
-                {
-                    b.HasOne("ChitFundAPI.Models.Contact", "Contact")
-                        .WithMany()
-                        .HasForeignKey("ContactId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ChitFundAPI.Models.PaymentType", "PaymentType")
-                        .WithMany()
-                        .HasForeignKey("PaymentTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ChitFundAPI.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("ReferedBy")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ChitFundAPI.Models.Transaction", "Transaction")
-                        .WithMany()
-                        .HasForeignKey("TransactionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Contact");
-
-                    b.Navigation("PaymentType");
-
-                    b.Navigation("Transaction");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ChitFundAPI.Models.Transaction", b =>
-                {
-                    b.HasOne("ChitFundAPI.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ChitFundAPI.Models.Contact", "Contact")
-                        .WithMany()
-                        .HasForeignKey("ContactId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ChitFundAPI.Models.Plandetail", "Plandetail")
-                        .WithMany()
-                        .HasForeignKey("PlanDetailsId");
-
-                    b.HasOne("ChitFundAPI.Models.Plan", "Plan")
-                        .WithMany()
-                        .HasForeignKey("PlanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ChitFundAPI.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("ReferedBy")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ChitFundAPI.Models.TransType", "TransType")
-                        .WithMany()
-                        .HasForeignKey("TransTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-
-                    b.Navigation("Contact");
-
-                    b.Navigation("Plan");
-
-                    b.Navigation("Plandetail");
-
-                    b.Navigation("TransType");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ChitFundAPI.Models.TransType", b =>

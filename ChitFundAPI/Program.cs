@@ -1,13 +1,34 @@
 using ChitFundAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 //Dbcontext
 builder.Services.AddDbContext<IdentityModel>(item => item.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
+
+//Cors
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:4200");
+                          builder.AllowAnyHeader();
+                          builder.AllowAnyMethod();
+                          builder.AllowCredentials();
+                      });
+});
 
 var app = builder.Build();
 
@@ -23,6 +44,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
