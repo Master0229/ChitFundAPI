@@ -12,7 +12,7 @@ namespace ChitFundAPI.Models
 
         public float Amount { get; set; }
         public DateTime TransDateTime { get; set; }
-        public DateTime ModifiedDateTime { get; set; }
+        public DateTime? ModifiedDateTime { get; set; }
 
         [ForeignKey("PaymentType")]
         public int PaymentTypeId { get; set; }
